@@ -1,0 +1,26 @@
+import { useRouter } from 'next/router';
+
+const Home = () => {
+  const router = useRouter();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const query = e.target.search.value;
+    if (query) {
+      router.push(`/search?query=${query}`);
+    }
+  };
+
+  return (
+    <div className="container">
+      <Navbar />
+      <div className="search-container">
+        <form onSubmit={handleSearch}>
+          <input type="text" name="search" placeholder="Search..." />
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
